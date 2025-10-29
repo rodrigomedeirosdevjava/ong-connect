@@ -36,17 +36,18 @@ Plataforma web completa desenvolvida para conectar organizações não-govername
 
 ## 📂 Estrutura do Projeto
 
-| Pasta/Arquivo | Tipo | Descrição |
-|---------------|------|-----------|
-| `index.html` | 📄 Página | Homepage institucional |
-| `projetos.html` | 📄 Página | Portal de projetos |
-| `cadastro.html` | 📄 Página | Sistema de cadastro |
-| `css/style.css` | 🎨 Estilos | Framework visual principal |
-| `css/responsive.css` | 🎨 Estilos | Adaptações responsivas |
-| `js/main.js` | ⚡ Script | Lógica de interface |
-| `js/form-validation.js` | ⚡ Script | Validação de formulários |
-| `images/` | 🖼️ Assets | Mídias otimizadas |
-| `README.md` | 📝 Docs | Documentação técnica |
+| Pasta/Arquivo           | Tipo | Descrição                  |
+|-------------------------|------|----------------------------|
+| `index.html`            | 📄 Página | Homepage institucional     |
+| `projetos.html`         | 📄 Página | Portal de projetos         |
+| `cadastro.html`         | 📄 Página | Sistema de cadastro        |
+| `css/style.css`         | 🎨 Estilos | Framework visual principal |
+| `css/responsive.css`    | 🎨 Estilos | Adaptações responsivas     |
+| `js/main.js`            | ⚡ Script | Lógica de interface        |
+| `js/form-validation.js` | ⚡ Script | Validação de formulários   |
+| `images/`               | 🖼️ Assets | Mídias otimizadas          |
+| `README.md`             | 📝 Docs | Documentação técnica       |
+| `LICENSE`            | 📝 Docs | Licença MIT                |
 
 
 ## ♿ Acessibilidade
