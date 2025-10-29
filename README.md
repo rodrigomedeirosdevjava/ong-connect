@@ -80,7 +80,7 @@ git clone https://github.com/rodrigomedeirosdevjava/ong-connect.git
 ```
 2. Acesse a pasta do projeto:
 ```bash
-cd ong-platform
+cd ong-connect
 ```
 3. Abra o arquivo index.html em um navegador web
 
