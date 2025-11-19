@@ -6,6 +6,7 @@
     <meta name="description" content="Cadastre-se como voluntário, doador ou organização">
     <title>Cadastro - ONG Connect</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -25,13 +26,39 @@
 
         <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html" aria-current="page">Cadastre-se</a></li>
+                <li class="nav-item">
+                    <a href="index.html">Início</a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#about-title" class="dropdown-item">Sobre Nós</a>
+                        <a href="index.html#contact-title" class="dropdown-item">Contato</a>
+                        <a href="index.html#stats-title" class="dropdown-item">Estatísticas</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projetos.html">Projetos</a>
+                    <div class="dropdown-menu">
+                        <a href="projetos.html#volunteering-title" class="dropdown-item">Voluntariado</a>
+                        <a href="projetos.html#donations-title" class="dropdown-item">Doações</a>
+                        <a href="projetos.html" class="dropdown-item">Todos os Projetos</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro.html" aria-current="page">Cadastre-se</a>
+                    <div class="dropdown-menu">
+                        <a href="#volunteer" class="dropdown-item" onclick="selectType('volunteer')">👥 Voluntário</a>
+                        <a href="#donor" class="dropdown-item" onclick="selectType('donor')">💝 Doador</a>
+                        <a href="#ong" class="dropdown-item" onclick="selectType('ong')">🏢 Organização</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </div>
 </header>
+
+<!-- Alert de Cadastro -->
+<div class="alert alert-info">
+    <strong>📝 Cadastro Rápido!</strong> Preencha seus dados e escolha como quer contribuir.
+</div>
 
 <main>
     <section class="registration-hero" aria-labelledby="registration-title">
@@ -45,9 +72,18 @@
         <div class="container">
             <h2 id="types-title" class="sr-only">Tipos de Cadastro</h2>
             <div class="type-selector">
-                <button class="type-btn active" data-type="volunteer">Voluntário</button>
-                <button class="type-btn" data-type="donor">Doador</button>
-                <button class="type-btn" data-type="ong">Organização</button>
+                <button class="type-btn active" data-type="volunteer">
+                    <span class="type-icon">👥</span>
+                    Voluntário
+                </button>
+                <button class="type-btn" data-type="donor">
+                    <span class="type-icon">💝</span>
+                    Doador
+                </button>
+                <button class="type-btn" data-type="ong">
+                    <span class="type-icon">🏢</span>
+                    Organização
+                </button>
             </div>
         </div>
     </section>
@@ -181,9 +217,24 @@
 
                     <div class="form-group">
                         <label for="skills">Habilidades e Interesses</label>
+                        <div class="badge-container">
+                            <span class="badge badge-primary selectable" data-skill="educacao">📚 Educação</span>
+                            <span class="badge badge-secondary selectable" data-skill="saude">🏥 Saúde</span>
+                            <span class="badge badge-success selectable" data-skill="meio-ambiente">🌱 Meio Ambiente</span>
+                            <span class="badge badge-warning selectable" data-skill="tecnologia">💻 Tecnologia</span>
+                            <span class="badge badge-error selectable" data-skill="administrativo">📊 Administrativo</span>
+                            <span class="badge badge-info selectable" data-skill="artes">🎨 Artes</span>
+                        </div>
+                        <div class="skills-counter empty" id="skillsCounter">
+                            Nenhuma habilidade selecionada
+                        </div>
                         <textarea id="skills" name="skills"
-                                  placeholder="Descreva suas habilidades, experiências ou áreas de interesse..."
+                                  placeholder="Selecione suas habilidades acima ou digite manualmente..."
                                   rows="4"></textarea>
+                        <!-- Botão será adicionado automaticamente via JavaScript -->
+                        <div class="form-hint">
+                            Clique nas habilidades para selecionar/deselecionar
+                        </div>
                     </div>
                 </fieldset>
 
@@ -192,7 +243,7 @@
 
                     <div class="form-group">
                         <label for="donationType">Tipo de Doação Preferida *</label>
-                        <select id="donationType" name="donationType">
+                        <select id="donationType" name="donationType" required>
                             <option value="">Selecione...</option>
                             <option value="online">Online (PIX/Cartão)</option>
                             <option value="materials">Materiais</option>
@@ -210,6 +261,13 @@
                             <option value="yearly">Anual</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="preferredAmount">Valor Preferido (R$)</label>
+                        <input type="number" id="preferredAmount" name="preferredAmount"
+                               min="10" step="10"
+                               placeholder="Ex: 50">
+                    </div>
                 </fieldset>
 
                 <fieldset class="form-section" id="ongFields" style="display: none;">
@@ -217,42 +275,297 @@
 
                     <div class="form-group">
                         <label for="ongName">Nome da Organização *</label>
-                        <input type="text" id="ongName" name="ongName"
+                        <input type="text" id="ongName" name="ongName" required
                                placeholder="Nome oficial da organização">
                     </div>
 
                     <div class="form-group">
-                        <label for="cnpj">CNPJ</label>
-                        <input type="text" id="cnpj" name="cnpj"
+                        <label for="cnpj">CNPJ *</label>
+                        <input type="text" id="cnpj" name="cnpj" required
                                pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}"
                                placeholder="00.000.000/0000-00">
                     </div>
 
                     <div class="form-group">
-                        <label for="mission">Missão da Organização</label>
-                        <textarea id="mission" name="mission"
+                        <label for="organizationType">Tipo de Organização *</label>
+                        <select id="organizationType" name="organizationType" required>
+                            <option value="">Selecione...</option>
+                            <option value="ong">ONG</option>
+                            <option value="oscip">OSCIP</option>
+                            <option value="instituto">Instituto</option>
+                            <option value="fundacao">Fundação</option>
+                            <option value="associacao">Associação</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mission">Missão da Organização *</label>
+                        <textarea id="mission" name="mission" required
                                   placeholder="Descreva a missão e objetivos da organização..."
                                   rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Site (opcional)</label>
+                        <input type="url" id="website" name="website"
+                               placeholder="https://exemplo.org">
                     </div>
                 </fieldset>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    <button type="reset" class="btn btn-secondary">Limpar</button>
+                    <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
                 </div>
             </form>
         </div>
     </section>
 </main>
 
+<!-- Modal de Confirmação -->
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="success-icon">✅</div>
+        <h2 class="modal-title">Cadastro Realizado com Sucesso!</h2>
+        <p class="modal-text">Seu cadastro foi realizado com sucesso. Em breve entraremos em contato para dar continuidade ao processo.</p>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="closeModal('successModal'); window.location.href='index.html';">Voltar ao Início</button>
+            <button class="btn btn-secondary" onclick="closeModal('successModal')">Fazer Outro Cadastro</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Ajuda -->
+<div class="modal" id="helpModal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title">Precisa de Ajuda?</h2>
+        <p class="modal-text">Estamos aqui para ajudar você no processo de cadastro. Entre em contato conosco:</p>
+        <div class="contact-info">
+            <p><strong>📞 Telefone:</strong> (11) 99999-9999</p>
+            <p><strong>✉️ E-mail:</strong> suporte@ongconnect.org.br</p>
+            <p><strong>💬 WhatsApp:</strong> (11) 98888-8888</p>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="closeModal('helpModal')">Entendido</button>
+        </div>
+    </div>
+</div>
+
 <footer class="main-footer">
     <div class="container">
         <p>&copy; 2025 ONG Connect. Todos os direitos reservados.</p>
         <p>Desenvolvido com ❤️ para transformar vidas</p>
+        <button class="btn btn-secondary" onclick="showModal('helpModal')" style="margin-top: 1rem;">
+            🤔 Precisa de Ajuda?
+        </button>
     </div>
 </footer>
 
 <script src="js/form-validation.js"></script>
 <script src="js/main.js"></script>
+<script>
+    // Sistema de seleção de habilidades
+    let selectedSkills = new Set();
+
+    function initSkillsSelection() {
+        const skillBadges = document.querySelectorAll('.selectable');
+        const skillsTextarea = document.getElementById('skills');
+
+        skillBadges.forEach(badge => {
+            badge.addEventListener('click', function() {
+                const skill = this.getAttribute('data-skill');
+                const skillText = this.textContent.trim();
+
+                if (selectedSkills.has(skill)) {
+                    // Remove a skill se já estiver selecionada
+                    selectedSkills.delete(skill);
+                    this.classList.remove('selected');
+                } else {
+                    // Adiciona a skill se não estiver selecionada
+                    selectedSkills.add(skill);
+                    this.classList.add('selected');
+                }
+
+                updateSkillsTextarea();
+                updateSkillsCounter();
+            });
+        });
+
+        // Limpar skills quando o textarea for editado manualmente
+        if (skillsTextarea) {
+            skillsTextarea.addEventListener('input', function() {
+                // Se o usuário editar manualmente, limpa as skills selecionadas
+                const currentText = this.value.trim();
+                const selectedText = Array.from(selectedSkills).map(skill => {
+                    const badge = document.querySelector(`[data-skill="${skill}"]`);
+                    return badge ? badge.textContent.trim() : '';
+                }).filter(Boolean).join(', ');
+
+                if (currentText !== selectedText) {
+                    clearSelectedSkills();
+                }
+            });
+        }
+
+        // Observar o evento de reset do formulário
+        const form = document.getElementById('registrationForm');
+        if (form) {
+            form.addEventListener('reset', function() {
+                // Pequeno delay para garantir que o reset aconteceu
+                setTimeout(() => {
+                    clearSelectedSkills();
+                }, 10);
+            });
+        }
+    }
+
+    function updateSkillsTextarea() {
+        const skillsTextarea = document.getElementById('skills');
+        if (skillsTextarea) {
+            const skillTexts = Array.from(selectedSkills).map(skill => {
+                const badge = document.querySelector(`[data-skill="${skill}"]`);
+                return badge ? badge.textContent.trim() : '';
+            }).filter(Boolean);
+
+            skillsTextarea.value = skillTexts.join(', ');
+        }
+    }
+
+    function updateSkillsCounter() {
+        const counter = document.getElementById('skillsCounter');
+        if (counter) {
+            const count = selectedSkills.size;
+            if (count === 0) {
+                counter.textContent = 'Nenhuma habilidade selecionada';
+                counter.classList.remove('highlight');
+            } else if (count === 1) {
+                counter.textContent = '1 habilidade selecionada';
+                counter.classList.add('highlight');
+            } else {
+                counter.textContent = `${count} habilidades selecionadas`;
+                counter.classList.add('highlight');
+            }
+        }
+    }
+
+    function clearSelectedSkills() {
+        selectedSkills.clear();
+
+        // Remove a classe selected de todas as badges
+        document.querySelectorAll('.selectable.selected').forEach(badge => {
+            badge.classList.remove('selected');
+        });
+
+        // Atualiza o textarea
+        updateSkillsTextarea();
+
+        // Atualiza o contador
+        updateSkillsCounter();
+    }
+
+    // Função para selecionar tipo via dropdown
+    function selectType(type) {
+        const buttons = document.querySelectorAll('.type-btn');
+        buttons.forEach(btn => {
+            if (btn.getAttribute('data-type') === type) {
+                btn.click();
+            }
+        });
+    }
+
+    // Sistema de Modal
+    function showModal(modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+
+    // Fechar modal ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            closeModal(e.target.id);
+        }
+    });
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.modal.active');
+            if (openModal) {
+                closeModal(openModal.id);
+            }
+        }
+    });
+
+    // Simular envio do formulário
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validação adicional
+        let isValid = true;
+        const requiredFields = this.querySelectorAll('[required]');
+
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = 'var(--error-color)';
+            }
+        });
+
+        if (isValid) {
+            showModal('successModal');
+
+            // Simular delay de processamento
+            setTimeout(() => {
+                this.reset();
+                // Já será limpo pelo evento de reset
+            }, 1000);
+        } else {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+        }
+    });
+
+    // Botão de limpar habilidades individual
+    function createClearSkillsButton() {
+        const skillsContainer = document.querySelector('.form-group:has(#skills)');
+        if (skillsContainer && !document.getElementById('clearSkillsBtn')) {
+            const clearButton = document.createElement('button');
+            clearButton.type = 'button';
+            clearButton.id = 'clearSkillsBtn';
+            clearButton.className = 'btn btn-secondary';
+            clearButton.textContent = 'Limpar Habilidades';
+            clearButton.style.marginTop = '0.5rem';
+            clearButton.style.fontSize = '0.875rem';
+            clearButton.style.padding = '0.25rem 0.75rem';
+
+            clearButton.addEventListener('click', function() {
+                clearSelectedSkills();
+            });
+
+            skillsContainer.appendChild(clearButton);
+        }
+    }
+
+    // Tooltip para campos do formulário
+    document.querySelectorAll('label').forEach(label => {
+        const field = document.getElementById(label.getAttribute('for'));
+        if (field && field.required) {
+            label.innerHTML += ' <span style="color: var(--error-color);" title="Campo obrigatório">*</span>';
+        }
+    });
+
+    // Inicializar quando o DOM carregar
+    document.addEventListener('DOMContentLoaded', function() {
+        initSkillsSelection();
+        createClearSkillsButton();
+        updateSkillsCounter(); // Inicializar o contador
+    });
+</script>
 </body>
 </html>
