@@ -19,6 +19,12 @@ Plataforma web completa desenvolvida para conectar organizações não-govername
 - ✅ Formulários com validação e máscaras
 - ✅ Design acessível e semântico
 
+### Implementadas (Segunda Entrega)
+- ✅ Sistema de Design
+- ✅ Leiautes Responsivos com Flexbox e Grid
+- ✅ Navegação Sofisticada e Interativa
+- ✅ Componentes de Interface
+
 ### Futuras Implementações
 - Dashboard administrativo
 - Sistema de doações online
@@ -43,11 +49,12 @@ Plataforma web completa desenvolvida para conectar organizações não-govername
 | `cadastro.html`         | 📄 Página | Sistema de cadastro        |
 | `css/style.css`         | 🎨 Estilos | Framework visual principal |
 | `css/responsive.css`    | 🎨 Estilos | Adaptações responsivas     |
+| `css/components.css`    | 🎨 Estilos | Componentes                |
 | `js/main.js`            | ⚡ Script | Lógica de interface        |
 | `js/form-validation.js` | ⚡ Script | Validação de formulários   |
 | `images/`               | 🖼️ Assets | Mídias otimizadas          |
 | `README.md`             | 📝 Docs | Documentação técnica       |
-| `LICENSE`            | 📝 Docs | Licença MIT                |
+| `LICENSE`               | 📝 Docs | Licença MIT                |
 
 
 ## ♿ Acessibilidade
