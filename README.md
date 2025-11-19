@@ -19,6 +19,12 @@ Plataforma web completa desenvolvida para conectar organizações não-govername
 - ✅ Formulários com validação e máscaras
 - ✅ Design acessível e semântico
 
+### Implementadas (Segunda Entrega)
+- ✅ Sistema de Design
+- ✅ Leiautes Responsivos com Flexbox e Grid
+- ✅ Navegação Sofisticada e Interativa
+- ✅ Componentes de Interface
+
 ### Futuras Implementações
 - Dashboard administrativo
 - Sistema de doações online
