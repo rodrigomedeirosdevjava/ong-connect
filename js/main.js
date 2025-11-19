@@ -3,9 +3,13 @@ function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     const body = document.body;
+    const navItems = document.querySelectorAll('.nav-item');
 
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
             // Alternar estado do menu
@@ -13,6 +17,11 @@ function initMobileMenu() {
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
             body.classList.toggle('menu-open');
+
+            // Fechar todos os dropdowns abertos
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
 
             // Focar no primeiro link quando menu abrir
             if (!isExpanded) {
@@ -23,15 +32,48 @@ function initMobileMenu() {
             }
         });
 
-        // Fechar menu ao clicar em um link
+        // Toggle dropdown no mobile
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            const dropdown = item.querySelector('.dropdown-menu');
+
+            if (dropdown) {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Fechar outros dropdowns
+                        navItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+
+                        // Toggle dropdown atual
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        // Fechar menu ao clicar em um link (não dropdown)
         const navLinks = mainNav.querySelectorAll('a');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.classList.remove('active');
-                mainNav.classList.remove('active');
-                body.classList.remove('menu-open');
-            });
+            if (!link.parentElement.classList.contains('nav-item') ||
+                !link.parentElement.querySelector('.dropdown-menu')) {
+                link.addEventListener('click', () => {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.classList.remove('menu-open');
+
+                    // Fechar todos os dropdowns
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                });
+            }
         });
 
         // Fechar menu ao pressionar ESC
@@ -41,6 +83,12 @@ function initMobileMenu() {
                 menuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
                 body.classList.remove('menu-open');
+
+                // Fechar todos os dropdowns
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
                 menuToggle.focus();
             }
         });
@@ -54,6 +102,27 @@ function initMobileMenu() {
                 menuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
                 body.classList.remove('menu-open');
+
+                // Fechar todos os dropdowns
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+
+        // Fechar dropdowns ao redimensionar para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                if (mainNav.classList.contains('active')) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
             }
         });
     }
