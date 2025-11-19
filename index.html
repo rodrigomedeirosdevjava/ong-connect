@@ -6,6 +6,7 @@
     <meta name="description" content="Plataforma para ONGs - Conectando causas sociais com voluntários e doadores">
     <title>ONG Connect - Plataforma para Organizações Sociais</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -25,13 +26,39 @@
 
         <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
             <ul>
-                <li><a href="index.html" aria-current="page">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li class="nav-item">
+                    <a href="index.html" aria-current="page">Início</a>
+                    <div class="dropdown-menu">
+                        <a href="#about-title" class="dropdown-item">Sobre Nós</a>
+                        <a href="#contact-title" class="dropdown-item">Contato</a>
+                        <a href="#transparency" class="dropdown-item">Transparência</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="projetos.html">Projetos</a>
+                    <div class="dropdown-menu">
+                        <a href="projetos.html#volunteering-title" class="dropdown-item">Voluntariado</a>
+                        <a href="projetos.html#donations-title" class="dropdown-item">Doações</a>
+                        <a href="#all-projects" class="dropdown-item">Todos Projetos</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <div class="dropdown-menu">
+                        <a href="cadastro.html" class="dropdown-item">Voluntário</a>
+                        <a href="cadastro.html" class="dropdown-item">Doador</a>
+                        <a href="cadastro.html" class="dropdown-item">Organização</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </div>
 </header>
+
+<!-- ALERT DE FEEDBACK -->
+<div class="alert alert-info">
+    <strong>🎉 Bem-vindo à nossa plataforma!</strong> Conectamos ONGs, voluntários e doadores para criar impacto social real.
+</div>
 
 <main>
     <section class="hero" aria-labelledby="hero-title">
@@ -53,19 +80,58 @@
     <section class="about" aria-labelledby="about-title">
         <div class="container">
             <h2 id="about-title">Sobre a Plataforma</h2>
-            <div class="about-grid">
+            <div class="about-grid grid">
                 <article class="about-card">
                     <h3>Missão</h3>
+                    <!-- BADGES IMPLEMENTADOS -->
+                    <div class="badge-container">
+                        <span class="badge badge-primary">Propósito</span>
+                    </div>
                     <p>Facilitar o encontro entre organizações sociais e pessoas dispostas a fazer a diferença, ampliando o impacto de projetos transformadores.</p>
                 </article>
                 <article class="about-card">
                     <h3>Visão</h3>
+                    <!-- BADGES IMPLEMENTADOS -->
+                    <div class="badge-container">
+                        <span class="badge badge-secondary">Futuro</span>
+                    </div>
                     <p>Ser a principal plataforma de conexão social no Brasil, democratizando o acesso ao voluntariado e às doações.</p>
                 </article>
                 <article class="about-card">
                     <h3>Valores</h3>
+                    <!-- BADGES IMPLEMENTADOS -->
+                    <div class="badge-container">
+                        <span class="badge badge-success">Transparência</span>
+                        <span class="badge badge-warning">Colaboração</span>
+                        <span class="badge badge-error">Inovação</span>
+                    </div>
                     <p>Transparência, colaboração, impacto social, inovação e compromisso com o desenvolvimento sustentável.</p>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE ESTATÍSTICAS COM GRID SYSTEM -->
+    <section class="stats" aria-labelledby="stats-title">
+        <div class="container">
+            <h2 id="stats-title">Nossos Números</h2>
+            <div class="stats-grid grid grid-cols-2 grid-cols-4-lg">
+                <div class="stat-card">
+                    <div class="stat-number">820+</div>
+                    <div class="stat-label">Organizações</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3M+</div>
+                    <div class="stat-label">Voluntários</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">R$ 15B+</div>
+                    <div class="stat-label">Mobilizados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projetos</div>
+                </div>
             </div>
         </div>
     </section>
@@ -73,7 +139,7 @@
     <section class="contact" aria-labelledby="contact-title">
         <div class="container">
             <h2 id="contact-title">Contato</h2>
-            <div class="contact-info">
+            <div class="contact-info grid grid-cols-1 grid-cols-2-md">
                 <address>
                     <p><strong>Endereço:</strong> Rua das Organizações, 123 - Centro, São Paulo - SP</p>
                     <p><strong>Telefone:</strong> <a href="tel:+5511999999999">(11) 99999-9999</a></p>
@@ -92,6 +158,19 @@
     </section>
 </main>
 
+<!-- MODAL DE FEEDBACK -->
+<div class="modal" id="welcomeModal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2>Bem-vindo à ONG Connect!</h2>
+        <p>Estamos felizes em tê-lo conosco. Juntos podemos transformar vidas através da solidariedade e colaboração.</p>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="closeModal('welcomeModal')">Começar Jornada</button>
+            <button class="btn btn-secondary" onclick="closeModal('welcomeModal')">Explorar Primeiro</button>
+        </div>
+    </div>
+</div>
+
 <footer class="main-footer">
     <div class="container">
         <p>&copy; 2025 ONG Connect. Todos os direitos reservados.</p>
@@ -100,5 +179,91 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+    // Sistema de Modal melhorado
+    function initModals() {
+        const modals = document.querySelectorAll('.modal');
+        const body = document.body;
+
+        modals.forEach(modal => {
+            const closeBtn = modal.querySelector('.modal-close');
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeModal(modal.id);
+                });
+            }
+
+            // Fechar modal ao clicar fora do conteúdo
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+
+            // Fechar com ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+    }
+
+    function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const body = document.body;
+
+        if (modal) {
+            modal.classList.add('active');
+            body.classList.add('modal-open');
+
+            // Focar no botão de fechar para acessibilidade
+            const closeBtn = modal.querySelector('.modal-close');
+            if (closeBtn) {
+                setTimeout(() => closeBtn.focus(), 100);
+            }
+        }
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const body = document.body;
+
+        if (modal) {
+            modal.classList.remove('active');
+            body.classList.remove('modal-open');
+        }
+    }
+
+    // Mostrar modal após 2 segundos
+    document.addEventListener('DOMContentLoaded', function() {
+        initModals();
+
+        setTimeout(() => {
+            showModal('welcomeModal');
+        }, 2000);
+    });
+
+    // Sistema de Toast
+    function showToast(message, type = 'success') {
+        // Implementação simples do toast
+        const toast = document.createElement('div');
+        toast.className = `alert alert-${type}`;
+        toast.style.position = 'fixed';
+        toast.style.top = '20px';
+        toast.style.right = '20px';
+        toast.style.zIndex = '10000';
+        toast.textContent = message;
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 5000);
+    }
+</script>
 </body>
 </html>

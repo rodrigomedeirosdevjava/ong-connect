@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validação do formulário completo
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         let isFormValid = true;
         const requiredFields = form.querySelectorAll('[required]');
 
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showSuccessMessage() {
         alert('Cadastro realizado com sucesso! Em breve entraremos em contato.');
         form.reset();
-        
+
         // Reset visual
         inputs.forEach(input => {
             clearError(input);
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showErrorMessage() {
         alert('Por favor, corrija os erros destacados no formulário antes de enviar.');
-        
+
         // Rolar para o primeiro erro
         const firstError = form.querySelector('.error-message[style*="display: block"]');
         if (firstError) {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cepInput = document.getElementById('cep');
     cepInput.addEventListener('blur', function() {
         const cep = this.value.replace(/\D/g, '');
-        
+
         if (cep.length === 8) {
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => response.json())
