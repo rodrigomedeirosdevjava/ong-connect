@@ -6,7 +6,6 @@
     <meta name="description" content="Conheça nossos projetos sociais e saiba como participar">
     <title>Projetos Sociais - ONG Connect</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -26,38 +25,13 @@
 
         <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
             <ul>
-                <li class="nav-item">
-                    <a href="index.html">Início</a>
-                    <div class="dropdown-menu">
-                        <a href="index.html#about-title" class="dropdown-item">Sobre Nós</a>
-                        <a href="index.html#contact-title" class="dropdown-item">Contato</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="projetos.html" aria-current="page">Projetos</a>
-                    <div class="dropdown-menu">
-                        <a href="#volunteering-title" class="dropdown-item">Voluntariado</a>
-                        <a href="#donations-title" class="dropdown-item">Doações</a>
-                        <a href="#all-projects" class="dropdown-item">Todos Projetos</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="cadastro.html">Cadastre-se</a>
-                    <div class="dropdown-menu">
-                        <a href="cadastro.html" class="dropdown-item">Voluntário</a>
-                        <a href="cadastro.html" class="dropdown-item">Doador</a>
-                        <a href="cadastro.html" class="dropdown-item">Organização</a>
-                    </div>
-                </li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
             </ul>
         </nav>
     </div>
 </header>
-
-<!-- ALERT DE FEEDBACK -->
-<div class="alert alert-success">
-    <strong>🌟 Novas Oportunidades!</strong> Confira nossos projetos mais recentes e faça a diferença.
-</div>
 
 <main>
     <section class="projects-hero" aria-labelledby="projects-title">
@@ -70,15 +44,9 @@
     <section class="volunteering" aria-labelledby="volunteering-title">
         <div class="container">
             <h2 id="volunteering-title">Voluntariado</h2>
-            <div class="projects-grid grid grid-cols-1 grid-cols-2-md grid-cols-3-lg">
+            <div class="projects-grid">
                 <article class="project-card">
                     <img src="images/projeto-1.jpg" alt="Projeto Educação para Todos - crianças estudando" width="400" height="250">
-                    <!-- BADGES IMPLEMENTADOS -->
-                    <div class="badge-container">
-                        <span class="badge badge-primary">Educação</span>
-                        <span class="badge badge-success">Ativo</span>
-                        <span class="badge badge-warning">Urgente</span>
-                    </div>
                     <div class="project-content">
                         <h3>Educação para Todos</h3>
                         <p>Oferecemos reforço escolar e atividades extracurriculares para crianças em situação de vulnerabilidade social.</p>
@@ -87,21 +55,12 @@
                             <li><strong>Horários:</strong> Segunda a sexta, 14h-17h</li>
                             <li><strong>Vagas:</strong> 15 voluntários</li>
                         </ul>
-                        <div class="project-actions">
-                            <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
-                            <button class="btn btn-secondary" onclick="showToast('Projeto adicionado aos favoritos!', 'success')">Favoritar</button>
-                        </div>
+                        <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
                     </div>
                 </article>
 
                 <article class="project-card">
                     <img src="images/projeto-2.jpg" alt="Projeto Alimentação Solidária - distribuição de alimentos" width="400" height="250">
-                    <!-- BADGES IMPLEMENTADOS -->
-                    <div class="badge-container">
-                        <span class="badge badge-secondary">Alimentação</span>
-                        <span class="badge badge-success">Ativo</span>
-                        <span class="badge badge-error">Alta Prioridade</span>
-                    </div>
                     <div class="project-content">
                         <h3>Alimentação Solidária</h3>
                         <p>Distribuição de cestas básicas e refeições para famílias em situação de insegurança alimentar.</p>
@@ -110,21 +69,12 @@
                             <li><strong>Horários:</strong> Sábados, 8h-12h</li>
                             <li><strong>Vagas:</strong> 20 voluntários</li>
                         </ul>
-                        <div class="project-actions">
-                            <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
-                            <button class="btn btn-secondary" onclick="showToast('Projeto adicionado aos favoritos!', 'success')">Favoritar</button>
-                        </div>
+                        <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
                     </div>
                 </article>
 
                 <article class="project-card">
                     <img src="images/projeto-3.jpg" alt="Projeto Meio Ambiente Sustentável - plantio de árvores" width="400" height="250">
-                    <!-- BADGES IMPLEMENTADOS -->
-                    <div class="badge-container">
-                        <span class="badge badge-success">Meio Ambiente</span>
-                        <span class="badge badge-success">Ativo</span>
-                        <span class="badge badge-primary">Sustentável</span>
-                    </div>
                     <div class="project-content">
                         <h3>Meio Ambiente Sustentável</h3>
                         <p>Projeto de conscientização ambiental e recuperação de áreas verdes urbanas.</p>
@@ -133,10 +83,7 @@
                             <li><strong>Horários:</strong> Domingos, 9h-13h</li>
                             <li><strong>Vagas:</strong> 25 voluntários</li>
                         </ul>
-                        <div class="project-actions">
-                            <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
-                            <button class="btn btn-secondary" onclick="showToast('Projeto adicionado aos favoritos!', 'success')">Favoritar</button>
-                        </div>
+                        <a href="cadastro.html" class="btn btn-primary">Quero ser voluntário</a>
                     </div>
                 </article>
             </div>
@@ -146,9 +93,8 @@
     <section class="donations" aria-labelledby="donations-title">
         <div class="container">
             <h2 id="donations-title">Como Doar</h2>
-            <div class="donation-methods grid grid-cols-1 grid-cols-2-lg grid-cols-3-xl">
+            <div class="donation-methods">
                 <article class="donation-method">
-                    <div class="method-icon">💳</div>
                     <h3>Doação Online</h3>
                     <p>Faça sua doação de forma rápida e segura através do nosso sistema online.</p>
                     <ul>
@@ -156,11 +102,9 @@
                         <li>PIX (chave: doacao@ongconnect.org.br)</li>
                         <li>Boleto bancário</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="showModal('donationModal')">Doar Agora</button>
                 </article>
 
                 <article class="donation-method">
-                    <div class="method-icon">📦</div>
                     <h3>Doação de Materiais</h3>
                     <p>Aceitamos doações de alimentos, roupas, materiais escolares e produtos de higiene.</p>
                     <ul>
@@ -168,11 +112,9 @@
                         <li>Horário: Segunda a sexta, 9h-18h</li>
                         <li>Agendamento para grandes doações</li>
                     </ul>
-                    <button class="btn btn-secondary" onclick="showModal('locationsModal')">Ver Locais</button>
                 </article>
 
                 <article class="donation-method">
-                    <div class="method-icon">🔄</div>
                     <h3>Doação Recorrente</h3>
                     <p>Torne-se um doador mensal e ajude a manter nossos projetos de forma contínua.</p>
                     <ul>
@@ -180,46 +122,11 @@
                         <li>Relatórios mensais de aplicação</li>
                         <li>Certificado de doador recorrente</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="showModal('recurringModal')">Assinar</button>
                 </article>
             </div>
         </div>
     </section>
 </main>
-
-<!-- MODAIS DE FEEDBACK -->
-<div class="modal" id="donationModal">
-    <div class="modal-content">
-        <button class="modal-close">&times;</button>
-        <h2>Doação Online</h2>
-        <p>Escolha a forma de pagamento:</p>
-        <div class="payment-options">
-            <button class="btn btn-primary" onclick="showToast('Redirecionando para PIX...', 'info')">PIX</button>
-            <button class="btn btn-secondary" onclick="showToast('Redirecionando para Cartão...', 'info')">Cartão</button>
-            <button class="btn btn-secondary" onclick="showToast('Gerando boleto...', 'info')">Boleto</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="locationsModal">
-    <div class="modal-content">
-        <button class="modal-close">&times;</button>
-        <h2>Locais de Coleta</h2>
-        <div class="locations-list">
-            <div class="location-item">
-                <h3>Centro - São Paulo</h3>
-                <p>Rua das Organizações, 123 - Centro</p>
-                <p><strong>Horário:</strong> Segunda a sexta, 9h-18h</p>
-            </div>
-            <div class="location-item">
-                <h3>Zona Leste - São Paulo</h3>
-                <p>Av. Solidariedade, 456 - Tatuapé</p>
-                <p><strong>Horário:</strong> Segunda a sexta, 9h-18h</p>
-            </div>
-        </div>
-        <button class="btn btn-primary" onclick="closeModal('locationsModal')">Entendido</button>
-    </div>
-</div>
 
 <footer class="main-footer">
     <div class="container">
@@ -229,26 +136,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script>
-    function showModal(modalId) {
-        document.getElementById(modalId).classList.add('active');
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).classList.remove('active');
-    }
-
-    function showToast(message, type = 'success') {
-        // Simulação de toast
-        alert(`[${type.toUpperCase()}] ${message}`);
-    }
-
-    // Fechar modal ao clicar fora
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal')) {
-            e.target.classList.remove('active');
-        }
-    });
-</script>
 </body>
 </html>
